@@ -1,0 +1,8 @@
+/**index.wxss**/
+page{
+  background-color: #eeeeee;
+  height: 100%;
+}
+.hover-class{
+  background-color: rgba(0,0,0,0.5);
+}

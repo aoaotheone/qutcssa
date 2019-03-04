@@ -1,0 +1,4 @@
+/* pages/store/store.wxss */
+page{
+  height: 100%;
+}

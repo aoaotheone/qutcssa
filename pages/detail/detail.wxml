@@ -1,0 +1,29 @@
+<!--pages/detail/detail.wxml-->
+<view catchtap='show_card' catchtouchmove='hover_move' style='width:80rpx;height:80rpx;border-radius:40rpx;position:fixed;top:{{hover[0]}}rpx;left:{{hover[1]}}rpx;background-color:rgba(0,0,0,0.2);z-index:10000;display:flex;flex-direction:column;justify-content:center;align-items:center'>
+  <image src='../index/img/logo.png' style='width:80%;height:80%;' mode='scaleToFill'></image>
+</view>
+
+<view catchtap='hide_card' wx:if='{{showCard}}' style='width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center'>
+  <view style='width:750rpx;height:560rpx;background: url({{card_url}}) center center;background-size:cover;position:relative;'>
+    <text style='position:absolute;bottom:66rpx;left:66rpx;font-size:22rpx;color:#ffffff;'>{{card_no}}</text>
+  </view>
+</view>
+
+<view wx:if='{{!showCard}}' style='width:100%;height:167rpx;display:flex;flex-direction:row;justify-content:flex-start;align-items:center;position:fixed;top:0;z-index:200;background-color:#f7f7f7;'>
+
+  <image bindtap='back' style='width:60rpx;height:60rpx;margin-left:24rpx;' src='./img/back.png'></image>
+  <image bindtap='show_official' style='width:50rpx;height:70rpx;margin-left:24rpx;' src='./img/official.png'></image>
+  <image bindtap='collect' style='width:50rpx;height:70rpx;margin-left:24rpx;' src='./img/{{detail.is_collect == 1?"collected":"collect"}}.png'></image>
+  <view style='color:#7a7a7a;font-size:45rpx;margin-left:30rpx;'>{{detail.name}}</view> 
+</view>
+
+
+<view wx:if='{{!showCard}}' class='container' style='margin-top:167rpx;'>  
+  <view style='color:#7a7a7a;font-size:35rpx;margin-top:30rpx;'>折扣信息:</view>
+  <image src='{{detail.description}}' style='width:710rpx;margin-top:10rpx;' mode='widthFix'></image>
+  <view style='color:#7a7a7a;font-size:35rpx;margin-top:30rpx;'>店铺详情</view>
+  <image wx:for='{{detail.photo}}' wx:key='{{index}}' src='{{item}}' style='width:710rpx;margin-top:30rpx;' mode='widthFix'></image>
+  <view style='color:#7a7a7a;font-size:35rpx;margin-top:30rpx;'>地址:</view>
+  <view style='width:710rpx;color:#7a7a7a;font-size:35rpx;text-align:center;'>{{detail.address}}</view>
+  <image src='{{detail.url}}' style='width:150rpx;margin-top:30rpx;height:150rpx;border-radius:75rpx;margin-bottom:20rpx;'></image>  
+</view>

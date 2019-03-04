@@ -1,0 +1,18 @@
+<!--pages/register/register.wxml-->
+<view class='container'>
+  <view style='color:#999999;font-size:40rpx;margin-top:200rpx;'>请您填写信息进行注册</view>
+  <input bindinput='get_input' data-input='name' style='width:600rpx;height:80rpx;border:none;border-bottom:1px #eeeeee solid;color:#999999;line-height:80rpx;font-size:36rpx;margin-top:120rpx;' placeholder-style='color:#999999;font-size:36rpx;' placeholder='姓名（必填）'></input>
+  <picker bindchange="bind_sex_change" range="{{sex}}">
+    <view  style='width:600rpx;height:80rpx;border:none;border-bottom:1px #eeeeee solid;color:#999999;line-height:80rpx;font-size:36rpx;margin-top:60rpx;' >
+      {{shosed_sex}}
+    </view>
+  </picker>
+  <picker mode="date" value="{{date}}" start="1900-01-01" end="2018-01-01" bindchange="bindDateChange">
+    <view style='width:600rpx;height:80rpx;border:none;border-bottom:1px #eeeeee solid;color:#999999;line-height:80rpx;font-size:36rpx;margin-top:60rpx;' >
+      {{date}}
+    </view>
+  </picker>
+  <input bindinput='get_input' data-input='student_no' style='width:600rpx;height:80rpx;border:none;border-bottom:1px #eeeeee solid;color:#999999;line-height:80rpx;font-size:36rpx;margin-top:60rpx;' placeholder-style='color:#999999;font-size:36rpx;' placeholder='学号（必填）'></input>
+  <input bindinput='get_input' data-input='email' style='width:600rpx;height:80rpx;border:none;border-bottom:1px #eeeeee solid;color:#999999;line-height:80rpx;font-size:36rpx;margin-top:60rpx;' placeholder-style='color:#999999;font-size:36rpx;' placeholder='邮箱（获取更多咨询）'></input>
+  <view bindtap='register' style='width:600rpx;height:80rpx;color:#ffffff;line-height:80rpx;font-size:36rpx;margin-top:60rpx;text-align:center;border-radius:40rpx;background-color:#ffc548;' >注册</view>
+</view>

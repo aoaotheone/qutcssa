@@ -1,0 +1,56 @@
+<!--index.wxml-->
+
+<view catchtap='show_card' catchtouchmove='hover_move' style='width:80rpx;height:80rpx;border-radius:40rpx;position:fixed;top:{{hover[0]}}rpx;left:{{hover[1]}}rpx;background-color:rgba(0,0,0,0.2);z-index:10000;display:flex;flex-direction:column;justify-content:center;align-items:center'>
+  <image src='./img/logo.png' style='width:80%;height:80%;' mode='scaleToFill'></image>
+</view>
+<view catchtap='hide_card' wx:if='{{showCard}}' style='width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center'>
+  <view style='width:750rpx;height:560rpx;background: url({{card_url}}) center center;background-size:cover;position:relative;'>
+    <text style='position:absolute;bottom:66rpx;left:66rpx;font-size:22rpx;color:#ffffff;'>{{card_no}}</text>
+  </view>
+</view>
+
+<view wx:if='{{!showCard}}' class='container'>
+<swiper style='width:100%;height:330rpx;' indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key='{{index}}'>
+    <swiper-item style='width:100%;'>
+      <image bindtap='show_shop' data-shop_id='{{item.shop_id}}' src='{{item.photo}}' mode='aspectFill' style='width:100%;height:330rpx;'></image>      
+    </swiper-item>
+  </block>
+</swiper>
+  <view style='width:100%;position:relative;height:auto;margin-top:25rpx;'>
+    <!-- <view style='color:#ffffff;font-size:70rpx;text-shadow:0 0 10rpx #999999;position:absolute;top:60rpx;right:33rpx;letter-spacing:6rpx;'>品牌商家推荐</view>  
+    <view bindtap='go_to_stores' hover-class='hover-class' style='width:366rpx;height:63rpx;color:#ffffff;font-size:35rpx;text-shadow:0 0 10rpx #999999;position:absolute;top:186rpx;right:72rpx;border:1px #ffffff solid;text-align:center;line-height:63rpx;'>点击了解更多店铺信息</view>   -->
+    <image  bindtap='go_to_stores' src='./img/ad.png' mode='widthFix' style='width:100%;'></image>
+  </view>
+  <image style='width:210rpx;margin:15rpx 0;' src='./img/dayly.png' mode='widthFix'></image>
+  <view style='width:100%;display:flex;flex-direction:row;justify-content:space-around;align-items:flex-start;flex-wrap:wrap;'>
+    
+    <image wx:if='{{daily[0].shop_id}}' bindtap='show_shop' data-shop_id='{{daily[0].shop_id}}' src='{{daily[0].photo}}' mode='aspectFill' style='width:50%;height:196rpx;'></image>
+    <view  wx:if='{{!daily[0].shop_id}}' style='width:50%;height:196rpx;color:#00518C;text-align:center;line-height:196rpx;border:1px #00518C solid;box-sizing:border-box;'>虚位以待</view>
+    <image wx:if='{{daily[1].shop_id}}' bindtap='show_shop' data-shop_id='{{daily[1].shop_id}}' src='{{daily[1].photo}}' mode='aspectFill' style='width:50%;height:196rpx;'></image>
+    <view  wx:if='{{!daily[1].shop_id}}' style='width:50%;height:196rpx;color:#00518C;text-align:center;line-height:196rpx;border:1px #00518C solid;box-sizing:border-box;'>虚位以待</view>
+    
+
+    <image wx:if='{{daily[2].shop_id}}' bindtap='show_shop' data-shop_id='{{daily[2].shop_id}}' src='{{daily[2].photo}}' mode='aspectFill' style='width:32%;height:243rpx;margin-top:20rpx;'></image>
+    <view wx:if='{{!daily[2].shop_id}}' style='width:32%;height:243rpx;margin-top:20rpx;text-align:center;line-height:243rpx;color:#00518C;border:1px #00518C solid;box-sizing:border-box;'>虚位以待</view>
+    
+    <image wx:if='{{daily[3].shop_id}}' bindtap='show_shop' data-shop_id='{{daily[3].shop_id}}' src='{{daily[3].photo}}' mode='aspectFill' style='width:32%;height:243rpx;margin:20rpx 2%;'></image>
+    <view wx:if='{{!daily[3].shop_id}}' style='width:32%;height:243rpx;margin-top:20rpx;text-align:center;line-height:243rpx;color:#00518C;border:1px #00518C solid;box-sizing:border-box;'>虚位以待</view>
+    
+    <image wx:if='{{daily[4].shop_id}}' bindtap='show_shop' data-shop_id='{{daily[4].shop_id}}' src='{{daily[4].photo}}' mode='aspectFill' style='width:32%;height:243rpx;margin-top:20rpx;'></image>
+    <view wx:if='{{!daily[4].shop_id}}' style='width:32%;height:243rpx;margin-top:20rpx;text-align:center;line-height:243rpx;color:#00518C;border:1px #00518C solid;box-sizing:border-box;'>虚位以待</view>
+    
+
+  </view>
+  <view style='width:100%;display:flex;flex-direction:row;justify-content:center;align-items:center;height:108rpx;background-color:#00518C;position:fixed;bottom:0;'>
+    <view bindtap='show_public' style='width:50%;height:108rpx;display:flex;flex-direction:column;justify-content:center;align-items:center;'>
+      <image style='width:68rpx;height:47rpx;' mode='aspectFill' src='./img/tab1.png'></image>
+      <view style='color:#ffffff;font-size:30rpx;'>QUTCSS公众号</view>
+    </view>
+    <view  bindtap='show_service' style='width:50%;height:108rpx;display:flex;flex-direction:column;justify-content:center;align-items:center;'>
+      <image style='width:49rpx;height:51rpx;' mode='aspectFill' src='./img/tab2.png'></image>
+      <view style='color:#ffffff;font-size:30rpx;'>QUTCSS客服号</view>
+    </view>
+  </view>
+</view>
